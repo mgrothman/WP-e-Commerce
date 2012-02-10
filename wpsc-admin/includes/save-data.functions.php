@@ -610,7 +610,11 @@ function wpsc_save_category_set($category_id, $tt_id) {
 		
 		wpsc_update_categorymeta($category_id, 'fee', '0');
 		wpsc_update_categorymeta($category_id, 'active', '1');
-		wpsc_update_categorymeta($category_id, 'order', '0');
+		if($_POST['order'] != '0') {
+		  wpsc_update_categorymeta($category_id, 'order', $_POST['order']);
+		} else {
+		  wpsc_update_categorymeta($category_id, 'order', '0');
+		}
 		
 		if ( isset( $_POST['display_type'] ) )
 			wpsc_update_categorymeta($category_id, 'display_type',esc_sql(stripslashes($_POST['display_type'])));
