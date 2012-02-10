@@ -8,7 +8,7 @@
  */
 function wpsc_ajax_set_variation_order(){
 	global $wpdb;
-	$sort_order = $_POST['sort_order'];
+	$sort_order = $_POST['order'];
 	$parent_id  = $_POST['parent_id'];
 
 	$result = true;
@@ -18,7 +18,7 @@ function wpsc_ajax_set_variation_order(){
 
 		$value = preg_replace( '/[^0-9]/', '', $value );
 
-		if( !wpsc_update_meta( $value, 'sort_order', $key, 'wpsc_variation' ) )
+		if( !wpsc_update_meta( $value, 'order', $key, 'wpsc_variation' ) )
 			$result = false;
 	} 
 }
@@ -350,6 +350,15 @@ function wpsc_admin_category_forms_edit() {
             <td colspan="2">
                 <h3><?php _e( 'Advanced Settings', 'wpsc' ); ?></h3>
               
+            </td>
+        </tr>
+        
+        <tr class="form-field">
+            <th scope="row" valign="top">
+		<label for="order"><?php _e( 'Sort Order', 'wpsc' ); ?></label>
+            </th>
+            <td>
+              <input type='text' class="wpsc_cat_order" value='<?php if (isset($category['order'])) echo $category['order']; ?>' name='order' size='6' style='width: 40px;' />
             </td>
         </tr>
 
