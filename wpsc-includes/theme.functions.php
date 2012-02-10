@@ -895,7 +895,7 @@ function wpsc_display_products_page( $query ) {
 		if(!empty($query['category_url_name'])){
 			$args['wpsc_product_category'] = $query['category_url_name'];
 		}
-		$orderby = ( !empty($query['sort_order']) ) ? $query['sort_order'] : null;
+		$orderby = ( !empty($query['order']) ) ? $query['order'] : null;
 
 		$args = array_merge( $args, wpsc_product_sort_order_query_vars($orderby) );
 
